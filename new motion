@@ -1,0 +1,28 @@
+from gpiozero import LED, Button
+from signal import pause
+import urllib2
+from gpiozero import MotionSensor
+
+pir = MotionSensor(4)
+led = LED(17)
+button=Button(27)
+
+def ifttt():
+      print "done"
+      urllib2.urlopen("https://maker.ifttt.com/trigger/button_pressed/with/key/hBgwVN2raqAmjrPLQIULaTWbAejD8fYJipCyiKL3jlC").read
+
+button.when_pressed=ifttt
+pause()
+
+def iftt():
+	led.on()
+	urllib2.urlopen("https://maker.ifttt.com/trigger/motiontest/with/key/g0woufvAOWmL0-vISwBnF7PQ3wMsZ0SNZ1Nblazz-2r")
+
+while True:
+
+	pir.when_motion = iftt
+
+
+
+pause()
+
