@@ -10,8 +10,10 @@ pir = MotionSensor(4)
 
 
 def onpress():
+	pir.wait_for_motion(1)
 	if pir.motion_detected:
 		flashled()
+		print("motion detected")
 	else:
 		ifttt()
 	
